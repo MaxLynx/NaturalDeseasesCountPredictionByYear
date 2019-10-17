@@ -18,11 +18,11 @@ def regression(t, f, function, xlabels, xlim_added=10, ylim_added=10, title=""):
     plt.show()
 
 
-deseases_data = pd.read_csv('number-of-natural-disaster-events.csv')
-deseases_data = deseases_data[deseases_data['Entity'] == 'All natural disasters']
-data_sequence = np.array(deseases_data['Number of reported natural disasters (reported disasters)'])
+disasters_data = pd.read_csv('number-of-natural-disaster-events.csv')
+disasters_data = disasters_data[disasters_data['Entity'] == 'All natural disasters']
+data_sequence = np.array(disasters_data['Number of reported natural disasters (reported disasters)'])
 time_sequence = np.array([time for time in range(len(data_sequence))])
 regression(time_sequence, data_sequence, lambda x: x ** 1, [str(1900 + number) if (1900 + number) % 10 == 0
                                                        else ""
                                                        for number in range(len(data_sequence))],
-           title='All natural diseases by year (1900-2018)')
+           title='All natural disasters by year (1900-2018)')
